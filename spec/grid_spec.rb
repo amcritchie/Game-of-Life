@@ -45,6 +45,7 @@ describe Grid do
 
   context 'when cells should stay alive' do
     it 'should return the same grid' do
+
       still_live_grid = [
         [0, 0, 0, 0],
         [0, 1, 1, 0],
@@ -58,6 +59,7 @@ describe Grid do
 
   context 'when cells should should stay alive' do
     it 'should return the same grid' do
+
       still_live_grid = [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 0, 0],
@@ -71,6 +73,7 @@ describe Grid do
 
   context 'when cells should oscillate -- live, die, and be reborn repeatedly' do
     it 'should return an oscillating grid' do
+
       first_grid = [
         [0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0],
@@ -90,6 +93,7 @@ describe Grid do
 
   context 'when cells should oscillate -- live, die, and be reborn repeatedly' do
     it 'should return an oscillating grid' do
+
       first_grid = [
         [0, 0, 0, 0, 0, 0],
         [0, 1, 1, 0, 0, 0],
