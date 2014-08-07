@@ -19,6 +19,7 @@ describe Grid do
 
   context 'when all cells are dead' do
     it 'should return grid with all cells still dead' do
+
       dead_grid = [
         [0, 0, 0],
         [0, 0, 0],
@@ -59,7 +60,7 @@ describe Grid do
 
   context 'when cells should should stay alive' do
     it 'should return the same grid' do
-
+      skip
       still_live_grid = [
         [0, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 0, 0],
@@ -81,6 +82,7 @@ describe Grid do
         [0, 0, 1, 0, 0],
         [0, 0, 0, 0, 0]
       ]
+
       expect(Grid.new(first_grid).tick).to eq([
                                                      [0, 0, 0, 0, 0],
                                                      [0, 0, 0, 0, 0],

@@ -7,25 +7,26 @@ class Grid
   def tick
     col = 0
     row = 0
-    # p @grid.length
-    p "="*60
+
+    new_grid = Marshal.load( Marshal.dump(@grid))
+
     @grid.each do |rows|
-      p "+"*60
       rows.each do |columns|
         alive_neighbors = neighbors(row,col)
         alive = columns
-        p "k"
-        p @grid[row][col] = cell_change(alive_neighbors, alive)
+        new_grid[row][col] = cell_change(alive_neighbors, alive)
         col += 1
       end
       col = 0
     row += 1
     end
-    p @grid
+    # p new_grid
+    # p grid
+    new_grid
   end
 
   def cell_change(neighbors, alive)
-    if neighbors == 2 || neighbors == 3
+    if alive == 1 && (neighbors == 2 || neighbors == 3)
       alive = 1
     end
     if neighbors < 2
@@ -53,6 +54,7 @@ class Grid
       alive_cells += 1
     end
     if row > 0 && col < @size && (@grid[row-1][col+1] == 1)
+      p "r-1, c+1"
       alive_cells += 1
     end
     # Row + 0
@@ -72,10 +74,12 @@ class Grid
       alive_cells += 1
     end
     if row < @size && col < @size && (@grid[row+1][col+1] == 1)
+      p "r+1, c+1"
+
       alive_cells += 1
     end
-
-    p alive_cells
+    p "alive neigh #{alive_cells}"
+    alive_cells
   end
   
 end
