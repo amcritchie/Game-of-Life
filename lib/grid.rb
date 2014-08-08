@@ -13,7 +13,7 @@ class Grid
 
     @grid.each do |row|
       row.each do |cell|
-        alive_neighbors = neighbors(x,y)
+        alive_neighbors = alive_neighbors(x,y)
         alive = cell
         new_grid[x][y] = cell_change(alive_neighbors, alive)
         y += 1
@@ -34,26 +34,26 @@ class Grid
     alive
   end
 
-  def neighbors(row,col)
-    alive_cells = 0
+  def alive_neighbors(row,col)
+    alive_neighbors = 0
 
     # Row - 1
     # ======================================================
-    row > 0 && col < @size && (@grid[row-1][col+1] == 1) ? alive_cells += 1 : nil
-    row > 0 && col > 0 && (@grid[row-1][col-1] == 1) ? alive_cells += 1 : nil
-    row > 0 && (@grid[row-1][col] == 1) ? alive_cells += 1 : nil
+    row > 0 && col < @size && (@grid[row-1][col+1] == 1) ? alive_neighbors += 1 : nil
+    row > 0 && col > 0 && (@grid[row-1][col-1] == 1) ? alive_neighbors += 1 : nil
+    row > 0 && (@grid[row-1][col] == 1) ? alive_neighbors += 1 : nil
 
     # Row + 0
     # ======================================================
-    col < @size && (@grid[row][col+1] == 1) ? alive_cells += 1 : nil
-    col > 0 && (@grid[row][col-1] == 1) ? alive_cells += 1 : nil
+    col < @size && (@grid[row][col+1] == 1) ? alive_neighbors += 1 : nil
+    col > 0 && (@grid[row][col-1] == 1) ? alive_neighbors += 1 : nil
 
     # Row + 1
     # ======================================================
-    row < @size && col < @size && (@grid[row+1][col+1] == 1) ? alive_cells += 1 :nil
-    row < @size && col > 0 && (@grid[row+1][col-1] == 1) ? alive_cells += 1 :nil
-    row < @size && (@grid[row+1][col] == 1) ? alive_cells += 1 :nil
+    row < @size && col < @size && (@grid[row+1][col+1] == 1) ? alive_neighbors += 1 :nil
+    row < @size && col > 0 && (@grid[row+1][col-1] == 1) ? alive_neighbors += 1 :nil
+    row < @size && (@grid[row+1][col] == 1) ? alive_neighbors += 1 :nil
 
-    alive_cells
+    alive_neighbors
   end
 end
